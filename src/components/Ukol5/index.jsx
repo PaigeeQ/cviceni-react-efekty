@@ -11,10 +11,19 @@ Krok 3: Pokud je stav `postava` `null`, nechte zobrazen text `Načítám…`. Po
 */
 
 export const Ukol5 = () => {
-  const [postava, setPostava] = useState(null);
+  const [nacteno, setNacteno] = useState(false);
+
+  useEffect(() => {
+    const timer = setTimeout(() => {
+      setNacteno(true);
+    }, 3000);
+
+    return () => clearTimeout(timer);
+  }, []);
+
   return (
     <>
-      <p>Načítám…</p>
+      <p>{nacteno ? 'Hotovo!' : 'Načítám…'}</p>
     </>
   );
 };

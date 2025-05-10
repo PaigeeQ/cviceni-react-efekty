@@ -6,10 +6,22 @@ Zadání 2: Pomocí ternárního operátoru zobrazte text `Načítám…` nebo `
   ve stavu `nacteno`.
 */
 
+import { useEffect, useState } from "react";
+
 export const Ukol4 = () => {
+  const [nacteno, setNacteno] = useState(false); // Zadání 1
+
+  useEffect(() => {
+    const timer = setTimeout(() => {
+      setNacteno(true); // po 3 sec se načte
+    }, 3000);
+
+    return () => clearTimeout(timer); // 🧹 bezpečné zrušení timeoutu
+  }, []);
+  
   return (
     <>
-      <p>Načítám…</p>
+      <p>{nacteno ? 'Hotovo!' : 'Načítám…'}</p> {/* Zadání 2 */}
     </>
   );
 };

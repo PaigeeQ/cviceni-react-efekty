@@ -5,8 +5,13 @@ Zadání: Vytvořte v této komponentě efekt, který se spustí při PRVNÍM vy
 Poznámka: nemáte jak ověřit změnu oproti předchozímu příkladu. Důležité je ale vzykoušet si napsat,
   jak se píše useEffect, který se zavolá při prvním vykreslení komponenty.
 */
+import { useEffect, useState } from "react";
 
 export const Ukol2 = () => {
+  useEffect(() => {
+    console.log("Jsem tady.")
+  }, []) // ← důležité: prázdné pole
+
   return (
     <>
       <p>Jsem tady</p>
